@@ -45,8 +45,8 @@ const Movie = () => {
         <img src={`https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path}`} alt="" />
       </div>
       <h1>{movieDetails.original_title}</h1>
-      <h3>Release Date: {utcDate}</h3>
-      <h3>Runtime: {movieDetails.runtime} minutes</h3>
+      <h3>Release Date(in UTC): {utcDate}</h3>
+      <h3>Runtime(in minutes): {movieDetails.runtime} minutes</h3>
       <div>
         <h2>Overview</h2>
         <p>{movieDetails.overview}</p>
