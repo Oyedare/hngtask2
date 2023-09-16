@@ -6,6 +6,7 @@ const Movie = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [utcDate, setUtcDate] = useState(null);
+  const [runTime, setRunTime] = useState(null);
   useEffect(()=>{
 
     const options = {
@@ -30,6 +31,10 @@ const Movie = () => {
 
     // Set the UTC date in the state
     setUtcDate(utcDate.toISOString());
+    const hours = Math.floor(response.data.runtime / 60);
+    const minutes = response.data.runtime % 60;
+
+    setRunTime(`${hours} hours ${minutes} minutes`);
     })
     .catch(function (error) {
         console.error(error);
@@ -46,7 +51,7 @@ const Movie = () => {
       </div>
       <h1>{movieDetails.original_title}</h1>
       <h3>Release Date(in UTC): {utcDate}</h3>
-      <h3>Runtime(in minutes): {movieDetails.runtime} minutes</h3>
+      <h3>Runtime(in minutes): {runTime}</h3>
       <div>
         <h2>Overview</h2>
         <p>{movieDetails.overview}</p>
